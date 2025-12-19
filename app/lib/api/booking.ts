@@ -1,5 +1,5 @@
 import { apiFetch } from './client';
-import { BookingI, BookingAttachmentI } from '@/types/booking';
+import { BookingI, BookingAttachmentI } from '@/types';
 
 export const getBookings = () => {
 	return apiFetch<BookingI[]>('/bookings', {

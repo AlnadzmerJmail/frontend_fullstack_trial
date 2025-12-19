@@ -10,3 +10,11 @@ export interface BookingAttachmentI {
 	file_url?: string;
 	file_type: '.pdf' | '.jpeg' | '.jpg' | '.png';
 }
+
+// auth
+export interface UserAuthI {
+	id: string;
+	userName: string;
+	email: string;
+	message: string;
+}
