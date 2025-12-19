@@ -1,19 +1,25 @@
-import React from 'react';
 import Link from 'next/link';
 
+import { getBookings } from '../lib/api/booking';
+
 export default async function page() {
-	const data = await fetch('http://localhost:5000/bookings');
-	const bookings = await data.json();
+	const bookings = await getBookings();
+
 	return (
-		<div className="bg-green-50 p-2 flex justify-center flex-wrap">
-			<h2 className="w-full text-center mb-5">Bookings!</h2>
-			<ul className="w-1/2 flex items-start gap-3">
+		<div className="h-screen bg-green-50 p-2 flex flex-col items-center">
+			<div className="w-full flex justify-center items-center my-5">
+				<button className="mr-auto cursor-pointer">
+					<Link href={`/`}>Back</Link>
+				</button>
+				<h2 className="text-center mr-auto">Bookings List</h2>
+			</div>
+			<ul className="w-1/2 flex items-start gap-3 mb-auto">
 				{bookings.map((post: any, i: number) => (
 					<li
 						key={post.uuid || i}
 						className="rounded-sm p-3 border shadow w-1/4 flex flex-col"
 					>
-						<p>{post.job_description || 'Wala gago!'}</p>
+						<p>{post.job_description || '--'}</p>
 						<button className="mt-5 border px-2 py-1 cursor-pointer">
 							<Link href={`/bookings/${post.uuid}`}>See Details</Link>
 						</button>
